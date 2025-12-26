@@ -1,0 +1,29 @@
+# CS262 Project 2: Classic Board Game Simulation
+
+## Overview
+This project implements a **text-based classic board game simulation** in C for CS262 – Introduction to Low-level Programming (Fall 2025).  
+
+The game is played on a hidden board where players select tiles:  
+- If a selected tile contains a bomb, the game ends immediately.  
+- If a tile is safe, it reveals the number of bombs in its adjacent tiles.  
+- Tiles showing `0` trigger a recursive reveal of neighboring safe tiles.  
+
+This project reinforces **low-level programming skills**, including control flow, functions, pointers, dynamic memory management, recursion, and two-dimensional arrays. It also incorporates **command-line argument parsing** and memory safety using **Valgrind**.
+
+---
+
+## Features
+- **Dynamic Board Initialization:**  
+  Board size, difficulty, and random seed are specified via command-line arguments.
+- **Difficulty Levels:**  
+  - Easy: 5% bombs  
+  - Medium: 20% bombs  
+  - Hard: 35% bombs  
+- **Recursive Reveal:** Tiles with `0` recursively reveal adjacent safe tiles.  
+- **Play Board and Game Board:** Two separate dynamic 2D arrays track hidden bombs and player-visible state.  
+- **Memory-Safe Implementation:** No global variables; proper dynamic memory allocation and deallocation.  
+- **Randomized Gameplay:** Deterministic behavior using `srand(seed)` for reproducibility.
+
+---
+
+
