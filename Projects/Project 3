@@ -1,0 +1,73 @@
+# CS262 Project 3: The 262 Shell
+
+**Course:** CS262 – Introduction to Low-Level Programming (Fall 2025)  
+**University:** George Mason University  
+**Professors:** Hamza Mughal, Angkul Kongmunvattana, Bobby Chab  
+
+
+---
+
+## Project Overview
+This project implements a **robust, interactive shell in C**, designed to simulate the core functionality of Unix command-line interpreters. The 262 Shell is **one of the most technically challenging projects** in CS262, reinforcing advanced low-level programming skills, including:  
+
+- **Dynamic memory management** and ensuring memory safety with Valgrind  
+- **Linked list manipulation** for storing and managing command history and nodes  
+- **String parsing and tokenization** for command-line inputs  
+- **Bitwise operators** and low-level system call handling  
+- **Multi-file C programming** with separate compilation and modular design  
+
+The shell executes user commands, maintains a command history, manages file-based nodes, and handles errors gracefully — all without any global variables.
+
+---
+
+## Key Features
+
+### 1. Interactive Shell
+- Displays a **`262$` prompt** for user input.  
+- Supports continuous command input and execution until `quit` is invoked.  
+- Handles long input lines (up to 10,000 characters) efficiently.  
+
+### 2. Advanced Command Parsing
+- Parses commands and arguments separated by any number of whitespace characters.  
+- Supports built-in commands as well as execution of external commands via a provided API.  
+
+### 3. Built-in Commands
+The shell supports **eight core built-in commands**, each requiring careful handling of memory and pointers:
+
+| Command | Functionality |
+|---------|---------------|
+| `quit` | Safely exits the shell and deallocates all resources. |
+| `cd [dir]` | Changes the current working directory. Handles errors such as invalid paths or too many arguments. |
+| `history [index | -c]` | Tracks command history, allows clearing history, and re-executes previous commands by index. |
+| `new CMD [args]` | Creates a new ListNode representing a command and its arguments; assigns unique IDs dynamically. |
+| `list` | Displays all active ListNodes with details including command, arguments, and file contents. |
+| `open [id] [filename]` | Reads a file and stores its contents in the corresponding ListNode. |
+| `execute [id]` | Executes a command from a ListNode using the provided `run_command()` API; extracts and checks exit status. |
+| `remove [id]` | Deletes a ListNode by ID and frees associated memory. |
+
+### 4. Memory-Safe Linked List Management
+- Each `ListNode` stores command information, arguments, and optional file contents.  
+- Nodes are dynamically added, removed, and executed, ensuring proper memory allocation and deallocation.  
+
+### 5. Robust Error Handling
+- Handles invalid arguments, missing files, out-of-bounds history indices, and excessive command arguments.  
+- Prints meaningful error messages to `stderr` using standard conventions.  
+
+---
+
+## Technical Highlights
+- **Complexity:** Parsing user input, managing a doubly-linked list of nodes, handling dynamic memory, and integrating an API for command execution.  
+- **Memory Management:** Fully verified with **Valgrind** to ensure no leaks or undefined behavior.  
+- **Extensibility:** Modular design allows easy addition of new commands or enhancements.  
+- **Testing:** Includes a comprehensive test suite (`driver.py`) and manual test cases to validate functionality.  
+
+---
+
+## Getting Started
+
+### Prerequisites
+- GCC compiler  
+- Python 3 (for `driver.py`)  
+- Linux environment (project tested on Zeus)  
+
+
