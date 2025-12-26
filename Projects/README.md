@@ -1,28 +1,2 @@
 # Projects
 This folder contains all major projects completed for **CS262 ** (Fall 2025).
-## 📌 Projects Overview
-### 🔹 Project 1: [CubeSat Ground-Station Telemetry Console]
-**Patriot-1**, a 3U CubeSat, is now in low-Earth orbit and periodically down-links a 32-byte telemetry packet containing sensor readings such as temperature, battery, and orientation.  
-
-This project implements a **Ground-Station Telemetry Console** that:  
-- Parses telemetry packets and displays the satellite status.  
-- Accepts operator commands (fire thrusters, toggle SAFE-MODE, run autonomous ticks).  
-- Keeps the spacecraft alive despite temperature swings, battery drain, and radiation-induced glitches.  
-
-The project practices structured control flow, deterministic pseudo-random testing, interactive I/O, and modular program design.
-
----
-## Features
-- **Telemetry Parsing:** Reads and displays temperature, battery, and orientation error.  
-- **Operator Commands:**  
-  - `[L] Live-tick` – processes exactly 1 packet.  
-  - `[R] Run N ticks` – simulates N packets and displays the final state.  
-  - `[T] Fire thruster` – reduces orientation error (costs battery).  
-  - `[S] Toggle SAFE-MODE` – restricts commands & clamps drift.  
-  - `[Q] Quit mission` – prints a final health report and ends the program.  
-- **Simulation Logic:**  
-  - Handles temperature changes, battery drain, orientation drift, and radiation hits.  
-  - SAFE-MODE clamps extreme changes and ignores unsafe commands.  
-  - Automatic mission abort on critical satellite failure (temp < -20°C or > 90°C, battery = 0%, |orient_err| > 45° for 3 consecutive ticks).  
-
----
